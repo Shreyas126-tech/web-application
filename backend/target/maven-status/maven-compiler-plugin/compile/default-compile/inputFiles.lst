@@ -1,0 +1,14 @@
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\BackendApplication.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\config\DataInitializer.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\controller\AuthController.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\controller\ContentController.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\model\Devotee.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\model\NewsArticle.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\model\Peetadhipathi.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\model\Seva.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\repository\DevoteeRepository.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\repository\NewsArticleRepository.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\repository\PeetadhipathiRepository.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\repository\SevaRepository.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\service\AuthService.java
+C:\Users\pshre\OneDrive\Desktop\shreyas\web-application\backend\src\main\java\com\sodematha\backend\service\ContentService.java
