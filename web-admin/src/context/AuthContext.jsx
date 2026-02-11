@@ -1,26 +1,4 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, signInWithPhoneNumber, signOut, RecaptchaVerifier } from 'firebase/auth';
-
-const firebaseConfig = {
-    apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-    authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-    projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-    storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-    messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-    appId: import.meta.env.VITE_FIREBASE_APP_ID,
-};
-
-// Initialize Firebase only if keys are present to avoid crash on initial load
-let app;
-let auth;
-
-try {
-    app = initializeApp(firebaseConfig);
-    auth = getAuth(app);
-} catch (error) {
-    console.warn("Firebase not initialized. Check .env variables.");
-}
 
 const AuthContext = createContext();
 
@@ -31,43 +9,61 @@ export const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        if (!auth) {
-            setLoading(false);
-            return;
+        // Check for logged in user in local storage
+        const storedUser = localStorage.getItem('sode_matha_user');
+        if (storedUser) {
+            setCurrentUser(JSON.parse(storedUser));
         }
-        const unsubscribe = onAuthStateChanged(auth, (user) => {
-            setCurrentUser(user);
-            setLoading(false);
-        });
-        return unsubscribe;
+        setLoading(false);
     }, []);
 
-    const login = async (phone, otp) => {
-        if (!auth) {
-            // Mock Login for Demo
-            if (otp === '123456') { // Simple mock validation
-                const mockUser = { uid: 'demo-user', phoneNumber: phone, displayName: 'Demo Admin' };
-                setCurrentUser(mockUser);
-                return Promise.resolve(mockUser);
-            } else {
-                return Promise.reject(new Error("Invalid Mock OTP (Use 123456)"));
-            }
+    const signup = async (userData) => {
+        // Get existing users or empty array
+        const users = JSON.parse(localStorage.getItem('sode_matha_users') || '[]');
+
+        // Check if user already exists
+        const exists = users.find(u => u.email === userData.email || u.phone === userData.phone);
+        if (exists) {
+            return Promise.reject(new Error("User with this email or phone already exists."));
         }
-        // Real Firebase Login would go here
-        return Promise.reject(new Error("Real Firebase Login requires full implementation."));
+
+        // Add user with unique ID
+        const newUser = { ...userData, id: Date.now().toString() };
+        users.push(newUser);
+        localStorage.setItem('sode_matha_users', JSON.stringify(users));
+
+        // Auto login after signup
+        setCurrentUser(newUser);
+        localStorage.setItem('sode_matha_user', JSON.stringify(newUser));
+
+        return Promise.resolve(newUser);
+    };
+
+    const login = async (identifier, password) => {
+        const users = JSON.parse(localStorage.getItem('sode_matha_users') || '[]');
+
+        const user = users.find(u => (u.email === identifier || u.phone === identifier) && u.password === password);
+
+        if (user) {
+            setCurrentUser(user);
+            localStorage.setItem('sode_matha_user', JSON.stringify(user));
+            return Promise.resolve(user);
+        } else {
+            return Promise.reject(new Error("Invalid email/phone or password."));
+        }
     };
 
     const logout = () => {
-        if (auth) return signOut(auth);
         setCurrentUser(null);
+        localStorage.removeItem('sode_matha_user');
         return Promise.resolve();
     };
 
     const value = {
         currentUser,
+        signup,
         login,
-        logout,
-        auth // exposing auth for direct usage in components if needed (e.g. Recaptcha)
+        logout
     };
 
     return (

@@ -13,9 +13,6 @@ const Sidebar = () => {
 
     const menuItems = [
         { text: 'Dashboard', icon: <DashboardIcon />, path: '/admin/dashboard' },
-        { text: 'Content Manager', icon: <ArticleIcon />, path: '/admin/content' },
-        { text: 'Seva Bookings', icon: <EventIcon />, path: '/admin/sevas' },
-        { text: 'User Management', icon: <PeopleIcon />, path: '/admin/users' },
     ];
 
     return (

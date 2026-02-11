@@ -12,10 +12,13 @@ import AdminLayout from './components/layout/AdminLayout';
 // Public Pages
 import Home from './pages/public/Home';
 import History from './pages/public/History';
-import Gallery from './pages/public/Gallery';
 import Sevas from './pages/public/Sevas';
+import Kanike from './pages/public/Kanike';
+import OnlineSeva from './pages/public/OnlineSeva';
+import DailyWorship from './pages/public/DailyWorship';
 import Contact from './pages/public/Contact';
 import Login from './pages/public/Login';
+import Signup from './pages/public/Signup';
 
 // Admin Pages
 import Dashboard from './pages/admin/Dashboard';
@@ -34,10 +37,13 @@ function App() {
                         <Route path="/" element={<PublicLayout />}>
                             <Route index element={<Home />} />
                             <Route path="history" element={<History />} />
-                            <Route path="gallery" element={<Gallery />} />
                             <Route path="sevas" element={<Sevas />} />
+                            <Route path="daily-worship" element={<DailyWorship />} />
+                            <Route path="online-seva" element={<OnlineSeva />} />
+                            <Route path="kanike" element={<Kanike />} />
                             <Route path="contact" element={<Contact />} />
                             <Route path="login" element={<Login />} />
+                            <Route path="signup" element={<Signup />} />
                         </Route>
 
                         {/* Admin Routes - Protected by Auth (Logic to be added) */}

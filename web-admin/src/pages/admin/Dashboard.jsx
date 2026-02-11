@@ -1,48 +1,25 @@
 import React from 'react';
-import { Container, Grid, Paper, Typography } from '@mui/material';
+import { Container, Paper, Typography, Box } from '@mui/material';
 
 const Dashboard = () => {
     return (
         <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Typography variant="h4" gutterBottom>Dashboard</Typography>
-            <Grid container spacing={3}>
-                <Grid item xs={12} md={4} lg={3}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
-                        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                            Total Sevas
-                        </Typography>
-                        <Typography component="p" variant="h4">
-                            128
-                        </Typography>
-                        <Typography color="text.secondary" sx={{ flex: 1 }}>
-                            this month
-                        </Typography>
-                    </Paper>
-                </Grid>
-                <Grid item xs={12} md={4} lg={3}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
-                        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                            Total Revenue
-                        </Typography>
-                        <Typography component="p" variant="h4">
-                            ₹ 24,000
-                        </Typography>
-                        <Typography color="text.secondary" sx={{ flex: 1 }}>
-                            this month
-                        </Typography>
-                    </Paper>
-                </Grid>
-                <Grid item xs={12} md={4} lg={3}>
-                    <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column', height: 140 }}>
-                        <Typography component="h2" variant="h6" color="primary" gutterBottom>
-                            New Users
-                        </Typography>
-                        <Typography component="p" variant="h4">
-                            45
-                        </Typography>
-                    </Paper>
-                </Grid>
-            </Grid>
+            <Typography variant="h4" gutterBottom component="div" sx={{ fontWeight: 'bold', color: 'primary.main' }}>
+                Dashboard
+            </Typography>
+            <Paper sx={{ p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: 300, justifyContent: 'center' }}>
+                <Typography component="h2" variant="h4" color="primary" gutterBottom>
+                    Welcome to Sode Matha Admin Panel
+                </Typography>
+                <Typography variant="h6" color="text.secondary" paragraph>
+                    Manage your application settings securely.
+                </Typography>
+                <Box sx={{ mt: 2 }}>
+                    <Typography variant="body1" color="text.disabled">
+                        (Additional admin features can be enabled here in the future)
+                    </Typography>
+                </Box>
+            </Paper>
         </Container>
     );
 };
