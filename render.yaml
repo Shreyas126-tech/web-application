@@ -29,3 +29,17 @@ services:
           name: sode-matha-backend
           envVarKey: RENDER_EXTERNAL_URL
         # This magic links the frontend Config to the Backend's URL automatically!
+      - key: VITE_GOOGLE_MAPS_API_KEY
+        sync: false
+      - key: VITE_EMAILJS_SERVICE_ID
+        sync: false
+      - key: VITE_EMAILJS_TEMPLATE_ID
+        sync: false
+      - key: VITE_EMAILJS_SIGNUP_TEMPLATE_ID
+        sync: false
+      - key: VITE_EMAILJS_BOOKING_TEMPLATE_ID
+        sync: false
+      - key: VITE_EMAILJS_KANIKE_TEMPLATE_ID
+        sync: false
+      - key: VITE_EMAILJS_PUBLIC_KEY
+        sync: false
