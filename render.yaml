@@ -28,7 +28,7 @@ services:
   - type: web
     env: static
     name: seva-platform-ui
-    context: seva_ui
+    rootDir: seva_ui
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     routes:
